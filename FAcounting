@@ -1,0 +1,11 @@
+// Quantification of focal adhesions (x63) in SK-MEL-28 cells 
+run("Subtract Background...", "rolling=0.5 sliding");
+run("Enhance Local Contrast (CLAHE)", "blocksize=19 histogram=256 maximum=6 mask=*None*");
+run("Exp");
+//run("Brightness/Contrast...");
+// Adjust parameters according to image
+run("Enhance Contrast", "saturated=0.35");
+run("Apply LUT");
+run("Close");
+setAutoThreshold("Default dark");
+run("Analyze Particles...", "display summarize add");
